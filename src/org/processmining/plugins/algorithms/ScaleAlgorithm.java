@@ -36,7 +36,9 @@ public class ScaleAlgorithm {
 
 			switch (paramType) {
 				case "Sequential" :
+					
 					SequentialParameter seqParam = (SequentialParameter) map.get("Sequential");
+					context.log("Processing the composition sequential_" + seqParam.getK() + "...");
 					SequentialScale seqScale = new SequentialScale(parameters.getSeed(), seqParam.getK(),
 							seqParam.getTimeOffset(), seqParam.getExtension());
 					if (i == 0) {
@@ -58,6 +60,7 @@ public class ScaleAlgorithm {
 					break;
 				case "Choice" :
 					ChoiceParameter choiceParam = (ChoiceParameter) map.get("Choice");
+					context.log("Processing the composition choice_" + choiceParam.getK() + "...");
 					ChoiceScale choiceScale = new ChoiceScale(parameters.getSeed(), choiceParam.getK(),
 							choiceParam.getTimeOffset(), choiceParam.getExtension());
 					if (i == 0) {
@@ -79,6 +82,7 @@ public class ScaleAlgorithm {
 					break;
 				case "Parallel" :
 					ParallelParameter parallelParam = (ParallelParameter) map.get("Parallel");
+					context.log("Processing the composition parallel_" + parallelParam.getK() + "...");
 					ParallelScale parallelScale = new ParallelScale(parameters.getSeed(), parallelParam.getK(),
 							parallelParam.getTimeOffset(), parallelParam.getExtension());
 					if (i == 0) {
@@ -100,6 +104,7 @@ public class ScaleAlgorithm {
 					break;
 				case "Loop" :
 					LoopParameter loopParam = (LoopParameter) map.get("Loop");
+					context.log("Processing the composition loop_" + loopParam.getK() + "...");
 					LoopScale loopScale = new LoopScale(parameters.getSeed(), loopParam.getK(),
 							loopParam.getTimeOffset(), loopParam.getExtension());
 					if (i == 0) {

@@ -24,9 +24,6 @@ public class ChoiceScale extends ScaleAbstract {
 		}
 		List<List<XTrace>> res = new ArrayList<>();
 		for (int i = 0; i < listTraces.size(); i++) {
-			System.out.println(this.seed);
-			System.out.println(listPermutation.size());
-			System.out.println(i);
 			int index = new Random((long) Math.pow(this.seed, i)).nextInt(listPermutation.size());
 			List<XTrace> curTrace = new ArrayList<>();
 			XTraceImpl newTrace = new XTraceImpl(listTraces.get(i).getAttributes());

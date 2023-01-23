@@ -89,7 +89,6 @@ public class XLogStat {
 	
 	public float getAVGEventInCace() {
 		float f = Math.round(((float) this.getNumEvent())/this.log.size()*100f);
-		System.out.println(f);
 		return f / 100f ;
 	}
 	
