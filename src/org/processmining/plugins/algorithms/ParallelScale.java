@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.deckfour.xes.model.XAttributeTimestamp;
 import org.deckfour.xes.model.XEvent;
 import org.deckfour.xes.model.XLog;
@@ -14,7 +15,6 @@ import org.deckfour.xes.model.impl.XAttributeTimestampImpl;
 import org.deckfour.xes.model.impl.XLogImpl;
 import org.deckfour.xes.model.impl.XTraceImpl;
 
-import javafx.util.Pair;
 
 public class ParallelScale extends ScaleAbstract {
 
@@ -54,10 +54,10 @@ public class ParallelScale extends ScaleAbstract {
 		List<Pair<Integer, Integer>> eventPool = new ArrayList<>();
 		newTrace.add(listTraces.get(0).get(0));
 		for (int i = 1; i < listTraces.size(); i++) {
-			eventPool.add(new Pair<Integer, Integer>(i, 0));
+			eventPool.add(Pair.of(i, 0));
 		}
-		if (this.getNextEvent(new Pair<Integer, Integer>(0, 0), listTraces.get(0)).getValue() != -1) {
-			eventPool.add(this.getNextEvent(new Pair<Integer, Integer>(0, 0), listTraces.get(0)));
+		if (this.getNextEvent(Pair.of(0, 0), listTraces.get(0)).getValue() != -1) {
+			eventPool.add(this.getNextEvent(Pair.of(0, 0), listTraces.get(0)));
 		}
 
 		int counter = 0;
@@ -83,9 +83,9 @@ public class ParallelScale extends ScaleAbstract {
 
 	public Pair<Integer, Integer> getNextEvent(Pair<Integer, Integer> currEvent, XTrace trace) {
 		if (trace.size() > currEvent.getValue() + 1) {
-			return new Pair<Integer, Integer>(currEvent.getKey(), currEvent.getValue() + 1);
+			return Pair.of(currEvent.getKey(), currEvent.getValue() + 1);
 		} else {
-			return new Pair<Integer, Integer>(currEvent.getKey(), -1);
+			return Pair.of(currEvent.getKey(), -1);
 		}
 	}
 
